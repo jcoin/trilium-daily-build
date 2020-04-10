@@ -32,6 +32,6 @@ git add .drone.yml && git commit -m "AUTO: updating .drone.yml"
 
 echo "$merge_branch: Pushing"
 
-git push https://$GITUSER:$GITPASS@gitea.e9g.rocks/howard/trilium.git $merge_branch
+git push https://$GITUSER:$GITPASS@github.com/jcoin/trilium.git $merge_branch
 
 echo "$merge_branch: Done"
