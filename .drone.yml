@@ -1,0 +1,21 @@
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+- name: merge-from-github-master
+  image: alpine
+  commands:
+  - chmod +x -Rv bin
+  - apk update && apk upgrade && apk add --no-cache bash git openssh
+  - ./bin/git_setup.sh
+  - cd trilium
+  - ../bin/git_merge.sh stable
+  environment:
+    GITUSER:
+      from_secret: git_username
+    GITPASS:
+      from_secret: git_password

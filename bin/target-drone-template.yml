@@ -1,0 +1,26 @@
+kind: pipeline
+name: default
+
+platform:
+  os: linux
+  arch: arm
+
+steps:
+- name: build
+  image: alpine
+  commands:
+  - cat package.json | grep -v electron > server-package.json
+- name: docker
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    repo: hlince/trilium
+    auto_tag_suffix: ${DRONE_STAGE_ARCH}
+    tags:
+    - latest-{{BRANCH}}-${DRONE_STAGE_ARCH}
+    - {{VERSION}}-{{BRANCH}}-${DRONE_STAGE_ARCH}
+    - {{VERSION_MINOR}}-{{BRANCH}}-${DRONE_STAGE_ARCH}
+    - {{VERSION_MAJOR}}-{{BRANCH}}-${DRONE_STAGE_ARCH}
