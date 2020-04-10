@@ -17,7 +17,7 @@ steps:
       from_secret: docker_username
     password:
       from_secret: docker_password
-    repo: hlince/trilium
+    repo: jcoin/trilium
     auto_tag_suffix: ${DRONE_STAGE_ARCH}
     tags:
     - latest-{{BRANCH}}-${DRONE_STAGE_ARCH}
