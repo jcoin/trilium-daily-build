@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Cloning Target"
-git clone https://gitea.e9g.rocks/howard/trilium.git ./trilium
+git clone https://github.com/jcoin/trilium.git ./trilium
 
 cd trilium
 
